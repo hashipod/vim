@@ -1,14 +1,14 @@
 
 ## Installation
 
-Vim configuration, plugins managed by Vundle
+Vim configuration, use Vundle to manage plugins, aims to be simple.
 
 ```bash
-# install vundle
-git clone --depth 1 https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
 # clone this repo
 git clone --depth 1 https://github.com/nickelchen/vim.git ~/.vim
+
+# install vundle
+git clone --depth 1 https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
