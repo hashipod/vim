@@ -16,7 +16,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'Konfekt/FastFold'
 Plugin 'tmhedberg/SimpylFold'
-Plugin 'tmhedberg/matchit'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'junegunn/fzf.vim'
@@ -29,16 +28,20 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'prettier/vim-prettier'
 Plugin 'mxw/vim-jsx'
+Plugin 'pangloss/vim-javascript'
+Plugin 'prettier/vim-prettier'
 Plugin 'elzr/vim-json'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'mattn/emmet-vim'
 Plugin 'schickling/vim-bufonly'
+Plugin 'rbgrouleff/bclose.vim'
 Plugin 'cakebaker/scss-syntax.vim'
 
 Plugin 'godlygeek/tabular'              " required by vim-markdown
 Plugin 'plasticboy/vim-markdown'
+
+Bundle 'vim-scripts/matchit.zip'
 
 
 """""""""""""""""""""""""""""""""""""""
@@ -135,7 +138,6 @@ let g:jsx_ext_required = 0
 
 let g:prettier#config#tab_width = 4
 
-
 let g:perl_fold = 1
 let g:python_fold = 1
 let g:erlang_fold = 1
@@ -166,6 +168,8 @@ noremap <silent> <C-right> :bnext<CR>
 noremap <silent> <C-l> :bnext<CR>
 
 nnoremap <silent> <Leader>q :Bclose<CR>
+nnoremap <silent> <Leader>Q <C-w>c
+
 map <Leader>L :set invnumber<CR>
 
 nmap <Leader>s :set list!<CR>
@@ -173,12 +177,15 @@ map <Leader>T :%s/\s\+$//<CR>
 map <Leader>U :g/^$/d<CR>
 map <Leader>R :retab<CR>
 map <Leader>; %
-
 nmap <silent> <Leader>ev :e $MYVIMRC<CR>
 nmap <silent> <Leader>es :so $MYVIMRC<CR>
+nnoremap <silent> <leader>b :nohlsearch<CR>
+nnoremap <Leader>= :wincmd =<CR>
 
 nmap S :%s//g<LEFT><LEFT>
 vmap S :s//g<LEFT><LEFT>
+
+vnoremap // y/<C-R>"<CR>"
 
 vnoremap p "_dp
 vnoremap P "_dP
@@ -242,7 +249,6 @@ set listchars=tab:▸\ ,trail:·,extends:❯,precedes:❮,nbsp:×
 set list
 
 set number
-set nocompatible
 set nomodeline
 set viminfo='1000,f1,:1000,/1000
 set history=1000
