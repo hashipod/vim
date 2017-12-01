@@ -37,6 +37,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'schickling/vim-bufonly'
 Plugin 'rbgrouleff/bclose.vim'
 Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'nathanaelkane/vim-indent-guides'
 
 Plugin 'godlygeek/tabular'              " required by vim-markdown
 Plugin 'plasticboy/vim-markdown'
@@ -72,6 +73,7 @@ let g:airline_right_sep=''
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = ' '
+
 
 let g:fzf_layout = { 'down': '~40%'  }
 map <silent> <expr> <C-g> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
@@ -150,7 +152,7 @@ let g:vim_markdown_folding_disabled = 1
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_always_populate_loc_list = 1
 
-
+let g:indent_guides_guide_size = 1
 
 """""""""""""""""""""""""""""""""""""""
 """""""" Settings for Mappings """""""""
@@ -262,9 +264,9 @@ set autoindent
 set t_Co=256
 set mouse=
 set clipboard=unnamed
-let pair_program_mode = 0
 cmap w!! %!sudo tee > /dev/null %
 set backspace=indent,eol,start
+let pair_program_mode = 0
 
 noremap K <nop>
 nnoremap Q <nop>
