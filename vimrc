@@ -66,7 +66,6 @@ autocmd FileType nerdtree noremap <buffer> <Leader>L <nop>
 let NERDTreeMinimalUI=1
 let g:NERDTreeShowHidden=1
 
-
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline#extensions#tabline#enabled = 1
@@ -183,7 +182,7 @@ nnoremap <silent> <leader>b :nohlsearch<CR>
 nnoremap <Leader>= :wincmd =<CR>
 
 nmap S :%s//g<LEFT><LEFT>
-vmap S :s//g<LEFT><LEFT>
+vmap <Leader>S y:%s///g<LEFT><LEFT><LEFT><C-R>"<RIGHT>
 
 vnoremap // y/<C-R>"<CR>"
 
@@ -226,6 +225,7 @@ autocmd QuickFixCmdPost * nested cwindow | redraw!
 autocmd BufNewFile,BufReadPost *.js set shiftwidth=4 softtabstop=4 expandtab
 autocmd! BufEnter *.jsx let b:syntastic_checkers=['eslint']
 autocmd! BufEnter *.js let b:syntastic_checkers=['eslint']
+autocmd BufNewFile,BufRead *.js set filetype=javascript.jsx
 autocmd BufNewFile,BufRead *.ejs set filetype=html
 autocmd FileType scss set iskeyword+=-
 autocmd BufNewFile,BufReadPost *.scss set shiftwidth=4 softtabstop=4 expandtab
