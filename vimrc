@@ -132,6 +132,11 @@ au BufWrite *.scss :Autoformat
 au BufWrite *.py :Autoformat
 
 let g:user_emmet_leader_key='<C-C>'
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\      'extends' : 'jsx',
+\  },
+\}
 
 let g:vim_json_syntax_conceal = 0
 
