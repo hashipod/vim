@@ -78,6 +78,8 @@ let g:fzf_layout = { 'down': '~40%'  }
 map <silent> <expr> <C-g> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
 map <silent> <expr> <C-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
 
+let g:NERDSpaceDelims=1
+
 nnoremap <leader>a :CtrlSF
 vnoremap <Leader>a y<ESC> :CtrlSF <C-R>"
 
@@ -190,6 +192,8 @@ nnoremap <Leader>= :wincmd =<CR>
 
 nmap S :%s//g<LEFT><LEFT>
 vmap <Leader>S y:%s///g<LEFT><LEFT><LEFT><C-R>"<RIGHT>
+
+map <Leader>w :w<CR>
 
 vnoremap // y/<C-R>"<CR>"
 
