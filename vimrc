@@ -272,7 +272,7 @@ filetype plugin on
 set autoindent
 set t_Co=256
 set mouse=
-set clipboard=unnamed
+set clipboard^=unnamed,unnamedplus
 cmap w!! %!sudo tee > /dev/null %
 set backspace=indent,eol,start
 let pair_program_mode = 0
