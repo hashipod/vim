@@ -326,6 +326,19 @@ endfunc
 nnoremap zm :call ToggleFold() <Enter>
 nnoremap zo zA
 
+function! s:CopyToTmux()
+  let [lnum1, col1] = getpos("'<")[1:2]
+  let [lnum2, col2] = getpos("'>")[1:2]
+  let lines = getline(lnum1, lnum2)
+  let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
+  let lines[0] = lines[0][col1 - 1:]
+  let tempfile = tempname()
+  call writefile(lines, tempfile, "a")
+  call system('tmux load-buffer '.tempfile)
+  call delete(tempfile)
+endfunction
+vnoremap <silent> <leader>y :call <sid>CopyToTmux()<cr>
+
 colorscheme leo
 hi CursorLine           cterm=none      ctermfg=10
 hi Search               cterm=none      ctermfg=232     ctermbg=214     guifg=#000000   guibg=#a8a8a8
