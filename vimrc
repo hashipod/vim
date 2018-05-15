@@ -213,6 +213,7 @@ nnoremap td  :tabclose<CR>
 set wildmenu wildmode=full
 set wildchar=<Tab> wildcharm=<C-Z>
 noremap <C-j> :b <C-z>
+noremap <C-q> <C-y>
 
 
 
