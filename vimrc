@@ -131,7 +131,7 @@ let g:go_fmt_autosave=0
 
 au BufWrite *.go :Autoformat
 au BufWrite *.scss :Autoformat
-au BufWrite *.py :Autoformat
+" au BufWrite *.py :Autoformat
 
 let g:user_emmet_leader_key='<C-C>'
 let g:user_emmet_settings = {
