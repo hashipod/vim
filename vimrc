@@ -272,6 +272,7 @@ filetype indent on
 filetype plugin on
 set autoindent
 set t_Co=256
+set term=screen-256color
 set mouse=
 set clipboard^=unnamed,unnamedplus
 cmap w!! %!sudo tee > /dev/null %
