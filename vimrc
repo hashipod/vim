@@ -336,11 +336,11 @@ function! s:CopyToTmux()
   let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
   let lines[0] = lines[0][col1 - 1:]
   let tempfile = tempname()
-  call writefile(lines, tempfile, "a")
+  call writefile(lines, tempfile, "b")
   call system('tmux load-buffer '.tempfile)
   call delete(tempfile)
 endfunction
-vnoremap <silent> <leader>y :call <sid>CopyToTmux()<cr>
+vnoremap <silent> Y :call <sid>CopyToTmux()<cr>
 
 colorscheme leo
 hi CursorLine           cterm=none      ctermfg=10
