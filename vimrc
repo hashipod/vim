@@ -38,6 +38,7 @@ Plugin 'schickling/vim-bufonly'
 Plugin 'rbgrouleff/bclose.vim'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'derekwyatt/vim-scala'
 
 Plugin 'godlygeek/tabular'              " required by vim-markdown
 Plugin 'plasticboy/vim-markdown'
@@ -116,6 +117,24 @@ let g:tagbar_type_go = {
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
 \ }
+
+let g:tagbar_type_scala = {
+    \ 'ctagstype' : 'scala',
+    \ 'sro'       : '.',
+    \ 'kinds'     : [
+      \ 'p:packages',
+      \ 'T:types:1',
+      \ 't:traits',
+      \ 'o:objects',
+      \ 'O:case objects',
+      \ 'c:classes',
+      \ 'C:case classes',
+      \ 'm:methods',
+      \ 'V:values:1',
+      \ 'v:variables:1'
+    \ ]
+\ }
+
 
 
 let g:previm_open_cmd = 'open -a Safari'
