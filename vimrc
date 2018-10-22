@@ -38,6 +38,7 @@ Plugin 'schickling/vim-bufonly'
 Plugin 'rbgrouleff/bclose.vim'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'derekwyatt/vim-scala'
 
 Plugin 'mzlogin/vim-markdown-toc'
 
@@ -118,6 +119,24 @@ let g:tagbar_type_go = {
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
 \ }
+
+let g:tagbar_type_scala = {
+    \ 'ctagstype' : 'scala',
+    \ 'sro'       : '.',
+    \ 'kinds'     : [
+      \ 'p:packages',
+      \ 'T:types:1',
+      \ 't:traits',
+      \ 'o:objects',
+      \ 'O:case objects',
+      \ 'c:classes',
+      \ 'C:case classes',
+      \ 'm:methods',
+      \ 'V:values:1',
+      \ 'v:variables:1'
+    \ ]
+\ }
+
 
 
 let g:previm_open_cmd = 'open -a Safari'
@@ -338,11 +357,11 @@ function! s:CopyToTmux()
   let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
   let lines[0] = lines[0][col1 - 1:]
   let tempfile = tempname()
-  call writefile(lines, tempfile, "a")
+  call writefile(lines, tempfile, "b")
   call system('tmux load-buffer '.tempfile)
   call delete(tempfile)
 endfunction
-vnoremap <silent> <leader>y :call <sid>CopyToTmux()<cr>
+vnoremap <silent> Y :call <sid>CopyToTmux()<cr>
 
 colorscheme leo
 hi CursorLine           cterm=none      ctermfg=10
