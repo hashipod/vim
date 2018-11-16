@@ -82,6 +82,7 @@ map <silent> <expr> <C-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":F
 let g:NERDSpaceDelims=1
 
 nnoremap <leader>a :CtrlSF
+nnoremap <leader>A :CtrlSFOpen <CR>
 vnoremap <Leader>a y<ESC> :CtrlSF <C-R>"
 
 command! -nargs=? -complete=buffer -bang BL :call BufOnly('<args>', '<bang>')
@@ -195,7 +196,7 @@ noremap <silent> <C-right> :bnext<CR>
 noremap <silent> <C-l> :bnext<CR>
 
 nnoremap <silent> <Leader>q :Bclose<CR>
-nnoremap <silent> <Leader>Q <C-w>c
+nnoremap <silent> <Leader>x <C-w>c
 
 map <Leader>L :set invnumber<CR>
 
@@ -210,9 +211,11 @@ nnoremap <silent> <leader>b :nohlsearch<CR>
 nnoremap <Leader>= :wincmd =<CR>
 
 nmap S :%s//g<LEFT><LEFT>
-vmap <Leader>S y:%s///g<LEFT><LEFT><LEFT><C-R>"<RIGHT>
+" vmap <Leader>S y:%s///g<LEFT><LEFT><LEFT><C-R>"<RIGHT>
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 map <Leader>w :w<CR>
+map <Leader>v :
 
 vnoremap // y/<C-R>"<CR>"
 
