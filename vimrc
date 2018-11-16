@@ -87,6 +87,10 @@ nnoremap <leader>a :CtrlSF
 nnoremap <leader>A :CtrlSFOpen <CR>
 vnoremap <Leader>a y<ESC> :CtrlSF <C-R>"
 
+let g:ctrlsf_auto_focus = {
+    \ "at": "start"
+    \ }
+
 command! -nargs=? -complete=buffer -bang BL :call BufOnly('<args>', '<bang>')
 
 command! -nargs=0 BB call tagbar#ToggleWindow()
