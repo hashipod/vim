@@ -84,7 +84,7 @@ map <silent> <expr> <C-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":F
 let g:NERDSpaceDelims=1
 
 nnoremap <leader>a :CtrlSF
-nnoremap <leader>A :CtrlSFOpen <CR>
+nnoremap <leader>s :CtrlSFOpen <CR>
 vnoremap <Leader>a y<ESC> :CtrlSF <C-R>"
 
 let g:ctrlsf_auto_focus = {
@@ -207,7 +207,6 @@ nnoremap <silent> <Leader>x <C-w>c
 
 map <Leader>L :set invnumber<CR>
 
-nmap <Leader>s :set list!<CR>
 map <Leader>T :%s/\s\+$//<CR>
 map <Leader>U :g/^$/d<CR>
 map <Leader>R :retab<CR>
