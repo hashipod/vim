@@ -90,6 +90,7 @@ vnoremap <Leader>a y<ESC> :CtrlSF <C-R>"
 let g:ctrlsf_auto_focus = {
     \ "at": "start"
     \ }
+let g:ctrlsf_search_mode = 'async'
 
 command! -nargs=? -complete=buffer -bang BL :call BufOnly('<args>', '<bang>')
 
