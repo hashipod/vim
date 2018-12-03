@@ -85,7 +85,7 @@ let g:NERDSpaceDelims=1
 
 nnoremap <leader>a :CtrlSF
 nnoremap <leader>s :CtrlSFOpen <CR>
-vnoremap <Leader>a y<ESC> :CtrlSF <C-R>"
+vnoremap <Leader>a y<ESC> :CtrlSF "<C-R>""
 
 let g:ctrlsf_auto_focus = {
     \ "at": "start"
