@@ -39,6 +39,7 @@ Plugin 'rbgrouleff/bclose.vim'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'rust-lang/rust.vim'
 
 Plugin 'mzlogin/vim-markdown-toc'
 
@@ -156,6 +157,7 @@ let g:multi_cursor_exit_from_insert_mode=0
 
 let g:go_fmt_autosave=0
 
+au BufWrite *.rs :Autoformat
 au BufWrite *.go :Autoformat
 au BufWrite *.scss :Autoformat
 " au BufWrite *.py :Autoformat
@@ -173,11 +175,13 @@ let g:jsx_ext_required = 0
 
 let g:prettier#config#tab_width = 4
 
+let g:rust_fold = 1
 let g:perl_fold = 1
 let g:python_fold = 1
 let g:erlang_fold = 1
 let g:go_fold = 1
 let g:fastfold_fold_command_suffixes =  ['x','X','a','A']
+let g:fastfold_savehook = 0
 
 let g:vim_markdown_folding_disabled = 1
 
@@ -221,7 +225,7 @@ nmap S :%s//g<LEFT><LEFT>
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 map <Leader>w :w<CR>
-map <Leader>v :
+map <Leader>k :
 
 vnoremap // y/<C-R>"<CR>"
 
