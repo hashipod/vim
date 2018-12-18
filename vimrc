@@ -83,6 +83,8 @@ map <silent> <expr> <C-g> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":F
 map <silent> <expr> <C-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
 
 let g:NERDSpaceDelims=1
+" useless
+let g:NERDTreeMapJumpPrevSibling='<C-909>q'
 
 nnoremap <leader>a :CtrlSF
 nnoremap <leader>s :CtrlSFOpen <CR>
