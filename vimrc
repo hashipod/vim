@@ -225,7 +225,9 @@ nmap S :%s//g<LEFT><LEFT>
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 map <Leader>w :w<CR>
-map <Leader>k :
+
+inoremap  <C-k> :
+nnoremap  <C-k> :
 
 vnoremap // y/<C-R>"<CR>"
 
