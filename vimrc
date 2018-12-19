@@ -40,6 +40,7 @@ Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'rust-lang/rust.vim'
+Plugin 'dart-lang/dart-vim-plugin'
 
 Plugin 'mzlogin/vim-markdown-toc'
 
