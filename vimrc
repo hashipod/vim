@@ -77,6 +77,15 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = ' '
 
+function! AirlineInit()
+	let g:airline#extensions#default#layout = ['a', 'b', 'c', 'x', 'y', 'z']
+endfunction
+autocmd VimEnter * call AirlineInit()
+let g:airline_section_x = ''
+let g:airline_section_z = '%3p%% %3l/%L:%3v'
+let g:airline_skip_empty_sections = 1
+
+
 
 let g:fzf_layout = { 'down': '~40%'  }
 map <silent> <expr> <C-g> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
