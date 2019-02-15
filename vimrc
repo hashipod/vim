@@ -41,6 +41,7 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'rust-lang/rust.vim'
 Plugin 'dart-lang/dart-vim-plugin'
+Plugin 'davidhalter/jedi-vim'
 
 Plugin 'mzlogin/vim-markdown-toc'
 
