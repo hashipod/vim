@@ -13,16 +13,18 @@ git clone --depth 1 https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vu
 # install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --all
 
-# install jedi for python code completion
+# optional: install jedi for python code completion
 pip install jedi
 
-# set fzf command. you can add to your zshrc file.
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore node_modules -g ""'
+# install any one of these search tools, ripgrep is recommended, it's faster.
+yum install epel-release.noarch the_silver_searcher  # centos
+sudo pacman -Sy ripgrep                              # arch linux
+sudo brew install ripgrep                            # macOS
 
-# install ag (centos)
-yum install epel-release.noarch the_silver_searcher
-# install ag (macOS)
-brew install ag
+# set fzf command to ripgrep. you can add to your zshrc file.
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+# or if you use ag.
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore node_modules -g ""'
 
 # start vim and install plugins
 vim +PluginInstall +qall
