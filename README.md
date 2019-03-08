@@ -18,8 +18,8 @@ pip install jedi
 
 # install any one of these search tools, ripgrep is recommended, it's faster.
 yum install epel-release.noarch the_silver_searcher  # centos
-sudo pacman -Sy ripgrep                              # arch linux
-sudo brew install ripgrep                            # macOS
+pacman -Sy ripgrep                              # arch linux
+brew install ripgrep                            # macOS
 
 # set fzf command to ripgrep. you can add to your zshrc file.
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
