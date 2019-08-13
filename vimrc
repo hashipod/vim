@@ -39,7 +39,13 @@ Plugin 'rbgrouleff/bclose.vim'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'derekwyatt/vim-scala'
+
 Plugin 'rust-lang/rust.vim'
+Plugin 'prabirshrestha/async.vim'
+Plugin 'prabirshrestha/vim-lsp'
+Plugin 'prabirshrestha/asyncomplete.vim'
+Plugin 'prabirshrestha/asyncomplete-lsp.vim'
+
 Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'tpope/vim-abolish'
 " Plugin 'davidhalter/jedi-vim'
@@ -107,6 +113,8 @@ let g:ctrlsf_auto_focus = {
     \ }
 let g:ctrlsf_search_mode = 'async'
 
+let g:go_metalinter_command = "golangci-lint"
+
 command! -nargs=? -complete=buffer -bang BL :call BufOnly('<args>', '<bang>')
 
 command! -nargs=0 BB call tagbar#ToggleWindow()
@@ -159,6 +167,14 @@ let g:tagbar_type_scala = {
 \ }
 
 
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+        \ 'whitelist': ['rust'],
+        \ })
+endif
+autocmd FileType rs,rust nnoremap gd :LspDefinition<CR>
 
 let g:previm_open_cmd = 'open -a Safari'
 augroup PrevimSettings
