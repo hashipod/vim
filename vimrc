@@ -174,7 +174,16 @@ if executable('rls')
         \ 'whitelist': ['rust'],
         \ })
 endif
-autocmd FileType rs,rust nnoremap gd :LspDefinition<CR>
+if executable('go-langserver')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'go-langserver',
+        \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
+        \ 'whitelist': ['go'],
+        \ })
+endif
+autocmd FileType go,rs,rust nnoremap gd :LspDefinition<CR>
+
+
 
 let g:previm_open_cmd = 'open -a Safari'
 augroup PrevimSettings
@@ -183,9 +192,11 @@ augroup PrevimSettings
 augroup END
 
 
+
 let g:multi_cursor_exit_from_insert_mode=0
 
 let g:go_fmt_autosave=0
+let g:go_def_mapping_enabled=0
 
 au BufWrite *.rs :Autoformat
 au BufWrite *.go :Autoformat
