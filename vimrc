@@ -220,6 +220,7 @@ if executable('pyls')
 endif
 autocmd FileType py,python,scala,java,go,rs,rust nnoremap gd :LspDefinition<CR>
 
+let g:lsp_text_edit_enabled = 0
 
 
 let g:previm_open_cmd = 'open -a Safari'
