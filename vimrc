@@ -1,3 +1,6 @@
+scriptencoding utf-8
+set encoding=utf-8
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 syntax on
@@ -239,7 +242,7 @@ let g:go_def_mapping_enabled=0
 au BufWrite *.rs :Autoformat
 au BufWrite *.go :Autoformat
 au BufWrite *.scss :Autoformat
-" au BufWrite *.py :Autoformat
+au BufWrite *.py :Autoformat
 
 let g:user_emmet_leader_key='<C-C>'
 let g:user_emmet_settings = {
@@ -398,9 +401,6 @@ map q: :q
 
 set timeoutlen=1000 ttimeoutlen=0
 
-scriptencoding utf-8
-set encoding=utf-8
-
 syntax on
 set number
 set nowrap
@@ -432,6 +432,8 @@ function! ToggleMouse()
     endif
 endfunc
 nnoremap <F4> :call ToggleMouse() <Enter>
+
+nnoremap <F8> *
 
 set pastetoggle=<F2>
 
