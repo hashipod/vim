@@ -90,7 +90,7 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = ' '
 
 function! AirlineInit()
-	let g:airline#extensions#default#layout = ['a', 'b', 'c', 'x', 'y', 'z']
+    let g:airline#extensions#default#layout = ['a', 'b', 'c', 'x', 'y', 'z']
 endfunction
 autocmd VimEnter * call AirlineInit()
 let g:airline_section_x = ''
@@ -170,6 +170,9 @@ let g:tagbar_type_scala = {
 \ }
 
 
+let g:lsp_text_edit_enabled = 0
+let g:lsp_highlight_references_enabled = 1
+
 if executable('rls')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'rls',
@@ -177,13 +180,21 @@ if executable('rls')
         \ 'whitelist': ['rust'],
         \ })
 endif
-if executable('go-langserver')
+if executable('gopls')
     au User lsp_setup call lsp#register_server({
-        \ 'name': 'go-langserver',
-        \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
+        \ 'name': 'gopls',
+        \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
         \ 'whitelist': ['go'],
         \ })
+    autocmd BufWritePre *.go LspDocumentFormatSync
 endif
+" if executable('go-langserver')
+"     au User lsp_setup call lsp#register_server({
+"         \ 'name': 'go-langserver',
+"         \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
+"         \ 'whitelist': ['go'],
+"         \ })
+" endif
 if executable('java') && filereadable(expand('~/lsp/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.300.v20190213-1655.jar'))
     au User lsp_setup call lsp#register_server({
         \ 'name': 'eclipse.jdt.ls',
@@ -223,7 +234,6 @@ if executable('pyls')
 endif
 autocmd FileType py,python,scala,java,go,rs,rust nnoremap gd :LspDefinition<CR>
 
-let g:lsp_text_edit_enabled = 0
 
 
 let g:previm_open_cmd = 'open -a Safari'
@@ -460,6 +470,7 @@ vnoremap <silent> Y :call <sid>CopyToTmux()<cr>
 colorscheme leo
 hi CursorLine           cterm=none      ctermfg=10
 hi Search               cterm=none      ctermfg=232     ctermbg=214     guifg=#000000   guibg=#a8a8a8
+hi lspReference                         ctermfg=black   ctermbg=green   guifg=black     guibg=green
 
 "------  Local Overrides  ------
 if filereadable($HOME.'/.vimrc_local')
