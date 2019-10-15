@@ -102,6 +102,7 @@ let g:airline_skip_empty_sections = 1
 let g:fzf_layout = { 'down': '~40%'  }
 map <silent> <expr> <C-g> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
 map <silent> <expr> <C-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
+map <silent> <expr> <C-j> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Buffers\<cr>"
 
 let g:NERDSpaceDelims=1
 " useless
@@ -338,7 +339,6 @@ nnoremap td  :tabclose<CR>
 
 set wildmenu wildmode=full
 set wildchar=<Tab> wildcharm=<C-Z>
-noremap <C-j> :b <C-z>
 noremap <C-q> <C-y>
 
 
