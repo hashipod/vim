@@ -239,6 +239,7 @@ autocmd FileType py,python,scala,java,go,rs,rust nnoremap gd :LspDefinition<CR>
 autocmd FileType py,python,scala,java,go,rs,rust nnoremap <Leader>d :LspPeekDefinition<CR>
 autocmd FileType py,python,scala,java,go,rs,rust nnoremap <Leader>t :LspPeekTypeDefinition<CR>
 autocmd FileType py,python,scala,java,go,rs,rust nnoremap <Leader>i :LspPeekImplementation<CR>
+autocmd FileType py,python,scala,java,go,rs,rust nnoremap <Leader>h :LspHover<CR>
 let g:lsp_diagnostics_enabled = 0
 
 
