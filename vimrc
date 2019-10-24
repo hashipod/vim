@@ -49,6 +49,8 @@ Plugin 'prabirshrestha/vim-lsp'
 Plugin 'prabirshrestha/asyncomplete.vim'
 Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 
+Plugin 'dense-analysis/ale'
+
 Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'tpope/vim-abolish'
 " Plugin 'davidhalter/jedi-vim'
@@ -196,7 +198,7 @@ endif
 "         \ 'whitelist': ['go'],
 "         \ })
 " endif
-if executable('java') && filereadable(expand('~/lsp/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.300.v20190213-1655.jar'))
+if executable('java') && filereadable(expand('~/lsp/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.500.v20190715-1310.jar'))
     au User lsp_setup call lsp#register_server({
         \ 'name': 'eclipse.jdt.ls',
         \ 'cmd': {server_info->[
@@ -209,9 +211,9 @@ if executable('java') && filereadable(expand('~/lsp/eclipse.jdt.ls/plugins/org.e
         \     '-Dfile.encoding=UTF-8',
         \     '-Xmx1G',
         \     '-jar',
-        \     expand('~/lsp/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.300.v20190213-1655.jar'),
+        \     expand('~/lsp/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.500.v20190715-1310.jar'),
         \     '-configuration',
-        \     expand('~/lsp/eclipse.jdt.ls/config_win'),
+        \     expand('~/lsp/eclipse.jdt.ls/config_linux'),
         \     '-data',
         \     getcwd()
         \ ]},
@@ -234,6 +236,14 @@ if executable('pyls')
         \ })
 endif
 autocmd FileType py,python,scala,java,go,rs,rust nnoremap gd :LspDefinition<CR>
+autocmd FileType py,python,scala,java,go,rs,rust nnoremap <Leader>d :LspPeekDefinition<CR>
+autocmd FileType py,python,scala,java,go,rs,rust nnoremap <Leader>t :LspPeekTypeDefinition<CR>
+autocmd FileType py,python,scala,java,go,rs,rust nnoremap <Leader>i :LspPeekImplementation<CR>
+let g:lsp_diagnostics_enabled = 0
+
+
+
+" let g:ale_linters = {'go': ['golangci-lint']}
 
 
 
