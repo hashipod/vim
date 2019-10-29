@@ -262,7 +262,7 @@ let g:go_fmt_autosave=0
 let g:go_def_mapping_enabled=0
 
 au BufWrite *.rs :Autoformat
-au BufWrite *.go :Autoformat
+" au BufWrite *.go :Autoformat
 au BufWrite *.scss :Autoformat
 au BufWrite *.py :Autoformat
 
