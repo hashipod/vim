@@ -241,11 +241,11 @@ autocmd FileType py,python,scala,java,go,rs,rust nnoremap <Leader>t :LspPeekType
 autocmd FileType py,python,scala,java,go,rs,rust nnoremap <Leader>i :LspPeekImplementation<CR>
 autocmd FileType py,python,scala,java,go,rs,rust nnoremap <Leader>h :LspHover<CR>
 let g:lsp_diagnostics_enabled = 0
-
+let g:lsp_fold_enabled = 0
 
 
 " let g:ale_linters = {'go': ['golangci-lint']}
-
+let g:ale_linters = {'go': ['govet']}
 
 
 let g:previm_open_cmd = 'open -a Safari'
