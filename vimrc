@@ -60,6 +60,8 @@ Plugin 'mzlogin/vim-markdown-toc'
 Plugin 'godlygeek/tabular'              " required by vim-markdown
 Plugin 'plasticboy/vim-markdown'
 
+Plugin 'tpope/vim-fugitive'
+
 Bundle 'vim-scripts/matchit.zip'
 
 
@@ -179,10 +181,11 @@ let g:lsp_highlight_references_enabled = 1
 if executable('rls')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'rls',
-        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
         \ 'whitelist': ['rust'],
         \ })
 endif
+
 if executable('gopls')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'gopls',
@@ -427,7 +430,7 @@ set number
 set nowrap
 set vb
 set ruler
-set statusline=%<%f\ %h%m%r%=%{fugitive#statusline()}\ \ %-14.(%l,%c%V%)\ %P
+set statusline=%<%f\ %h%m%r%=%{FugitiveStatusline()}\ \ %-14.(%l,%c%V%)\ %P
 let g:buftabs_only_basename=1
 let g:buftabs_marker_modified = "+"
 
