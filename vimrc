@@ -324,6 +324,7 @@ map <Leader>T :%s/\s\+$//<CR>
 map <Leader>U :g/^$/d<CR>
 map <Leader>R :retab<CR>
 map <Leader>; %
+map <Leader>. :@:<CR>
 nmap <silent> <Leader>ev :e $MYVIMRC<CR>
 nmap <silent> <Leader>es :so $MYVIMRC<CR>
 nnoremap <silent> <leader>b :nohlsearch<CR>
