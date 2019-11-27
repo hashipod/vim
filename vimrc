@@ -28,6 +28,8 @@ Plugin 'kannokanno/previm'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'terryma/vim-multiple-cursors'
@@ -192,7 +194,7 @@ if executable('gopls')
         \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
         \ 'whitelist': ['go'],
         \ })
-    autocmd BufWritePre *.go LspDocumentFormatSync
+    " autocmd BufWritePre *.go LspDocumentFormatSync
 endif
 " if executable('go-langserver')
 "     au User lsp_setup call lsp#register_server({
