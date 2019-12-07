@@ -63,6 +63,7 @@ Plugin 'godlygeek/tabular'              " required by vim-markdown
 Plugin 'plasticboy/vim-markdown'
 
 Plugin 'tpope/vim-fugitive'
+Plugin 'easymotion/vim-easymotion'
 
 Bundle 'vim-scripts/matchit.zip'
 
@@ -301,6 +302,8 @@ let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_always_populate_loc_list = 1
 
 let g:indent_guides_guide_size = 1
+
+map f <Plug>(easymotion-prefix)w
 
 """""""""""""""""""""""""""""""""""""""
 """""""" Settings for Mappings """""""""
