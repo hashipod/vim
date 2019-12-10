@@ -303,7 +303,7 @@ let g:syntastic_always_populate_loc_list = 1
 
 let g:indent_guides_guide_size = 1
 
-map f <Plug>(easymotion-prefix)w
+map f <Plug>(easymotion-bd-w)
 
 """""""""""""""""""""""""""""""""""""""
 """""""" Settings for Mappings """""""""
