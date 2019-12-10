@@ -344,6 +344,9 @@ map <Leader>w :w<CR>
 inoremap  <C-k> :
 nnoremap  <C-k> :
 
+nnoremap m <C-d>
+nnoremap , <C-u>
+
 vnoremap // y/<C-R>"<CR>"
 
 vnoremap p "_dp
