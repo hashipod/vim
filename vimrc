@@ -346,6 +346,8 @@ nnoremap  <C-k> :
 
 nnoremap m <C-d>
 nnoremap , <C-u>
+nnoremap ; zz
+nnoremap ' zt<C-y>
 
 vnoremap // y/<C-R>"<CR>"
 
