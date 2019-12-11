@@ -107,9 +107,16 @@ let g:airline_skip_empty_sections = 1
 
 
 let g:fzf_layout = { 'down': '~40%'  }
-map <silent> <expr> <C-g> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
-map <silent> <expr> <C-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
+map <silent> <expr> <C-g> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":CFiles\<cr>"
+map <silent> <expr> <C-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<cr>"
 map <silent> <expr> <C-j> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Buffers\<cr>"
+function! CleanFiles(query, fullscreen)
+  let command_fmt = 'ag --hidden --ignore .git --ignore node_modules --ignore vendor -g %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let spec = {'options': ['--query', a:query ], 'sink': 'e' }
+  call fzf#vim#grep(initial_command, 0, spec, a:fullscreen)
+endfunction
+command! -nargs=* -bang CFiles call CleanFiles(<q-args>, <bang>0)
 
 let g:NERDSpaceDelims=1
 " useless
@@ -436,6 +443,7 @@ noremap K <nop>
 nnoremap Q <nop>
 map q: :q
 
+set maxmempattern=20000
 set timeoutlen=1000 ttimeoutlen=0
 
 syntax on
