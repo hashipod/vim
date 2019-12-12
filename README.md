@@ -16,15 +16,9 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
 # optional: install jedi for python code completion
 pip install jedi
 
-# install any one of these search tools, ripgrep is recommended, it's faster.
-yum install epel-release.noarch the_silver_searcher  # centos
-pacman -Sy ripgrep                              # arch linux
-brew install ripgrep                            # macOS
-
-# set fzf command to ripgrep. you can add to your zshrc file.
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
-# or if you use ag.
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --ignore node_modules -g ""'
+# install fd, SEE https://github.com/sharkdp/fd
+# set fd as fzf backend
+export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git --exclude node_modules'
 
 # start vim and install plugins
 vim +PluginInstall +qall
