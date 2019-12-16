@@ -322,10 +322,10 @@ noremap L $
 vnoremap L g_
 
 
-noremap <silent> <C-left> :bprev<CR>
 noremap <silent> <C-h> :bprev<CR>
-noremap <silent> <C-right> :bnext<CR>
 noremap <silent> <C-l> :bnext<CR>
+
+noremap <silent> <tab> :bnext<CR>
 
 nnoremap <silent> <Leader>q :Bclose<CR>
 nnoremap <silent> <Leader>x <C-w>c
