@@ -253,14 +253,15 @@ autocmd FileType py,python,scala,java,go,rs,rust nnoremap <Leader>d :LspPeekDefi
 autocmd FileType py,python,scala,java,go,rs,rust nnoremap <Leader>t :LspPeekTypeDefinition<CR>
 autocmd FileType py,python,scala,java,go,rs,rust nnoremap <Leader>i :LspPeekImplementation<CR>
 autocmd FileType py,python,scala,java,go,rs,rust nnoremap <Leader>h :LspHover<CR>
+autocmd FileType py,python,scala,java,go,rs,rust nnoremap <F9> :LspStopServer<CR>
 let g:lsp_diagnostics_enabled = 0
 let g:lsp_fold_enabled = 0
 
 
 " let g:ale_linters = {'go': ['golangci-lint']}
-let g:ale_linters = {'go': ['govet']}
+let g:ale_linters = {'go': ['golangci-lint', 'govet']}
 let g:ale_fix_on_save = 1
-let g:ale_fixers = {'go': ['goimports']}
+let g:ale_fixers = {'go': ['goimports', 'gofmt']}
 
 
 let g:previm_open_cmd = 'open -a Safari'
@@ -280,6 +281,7 @@ au BufWrite *.rs :Autoformat
 " au BufWrite *.go :Autoformat
 au BufWrite *.scss :Autoformat
 au BufWrite *.py :Autoformat
+" if you want to disable AutoFormat, use :au! BufWrite"
 
 let g:user_emmet_leader_key='<C-C>'
 let g:user_emmet_settings = {
@@ -324,8 +326,6 @@ vnoremap L g_
 
 noremap <silent> <C-h> :bprev<CR>
 noremap <silent> <C-l> :bnext<CR>
-
-noremap <silent> <tab> :bnext<CR>
 
 nnoremap <silent> <Leader>q :Bclose<CR>
 nnoremap <silent> <Leader>x <C-w>c
