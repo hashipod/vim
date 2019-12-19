@@ -25,7 +25,6 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'majutsushi/tagbar'
 Plugin 'kannokanno/previm'
-Plugin 'Chiel92/vim-autoformat'
 Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
@@ -37,7 +36,6 @@ Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
 Plugin 'prettier/vim-prettier'
 Plugin 'elzr/vim-json'
-Plugin 'vim-syntastic/syntastic'
 Plugin 'mattn/emmet-vim'
 Plugin 'schickling/vim-bufonly'
 Plugin 'rbgrouleff/bclose.vim'
@@ -55,13 +53,9 @@ Plugin 'dense-analysis/ale'
 
 Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'tpope/vim-abolish'
-" Plugin 'davidhalter/jedi-vim'
-
 Plugin 'mzlogin/vim-markdown-toc'
-
 Plugin 'godlygeek/tabular'              " required by vim-markdown
 Plugin 'plasticboy/vim-markdown'
-
 Plugin 'tpope/vim-fugitive'
 Plugin 'easymotion/vim-easymotion'
 
@@ -89,6 +83,9 @@ autocmd FileType nerdtree noremap <buffer> <Leader>L <nop>
 
 let NERDTreeMinimalUI=1
 let g:NERDTreeShowHidden=1
+let g:NERDSpaceDelims=1
+" useless
+let g:NERDTreeMapJumpPrevSibling='<C-909>q'
 
 let g:airline_left_sep=''
 let g:airline_right_sep=''
@@ -105,7 +102,6 @@ let g:airline_section_z = '%3p%% %3l/%L:%3v'
 let g:airline_skip_empty_sections = 1
 
 
-
 let g:fzf_layout = { 'down': '~40%'  }
 map <silent> <expr> <C-g> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":CFiles\<cr>"
 map <silent> <expr> <C-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<cr>"
@@ -117,25 +113,16 @@ function! CleanFiles(query, fullscreen)
   call fzf#vim#grep(initial_command, 0, spec, a:fullscreen)
 endfunction
 command! -nargs=* -bang CFiles call CleanFiles(<q-args>, <bang>0)
-
-let g:NERDSpaceDelims=1
-" useless
-let g:NERDTreeMapJumpPrevSibling='<C-909>q'
-
 nnoremap <leader>a :CtrlSF
 nnoremap <leader>s :CtrlSFOpen <CR>
 vnoremap <Leader>a y<ESC> :CtrlSF "<C-R>""
 
-let g:ctrlsf_auto_focus = {
-    \ "at": "start"
-    \ }
+let g:ctrlsf_auto_focus = { "at": "start" }
 let g:ctrlsf_search_mode = 'async'
 
-let g:go_metalinter_command = "golangci-lint"
 
 command! -nargs=? -complete=buffer -bang BL :call BufOnly('<args>', '<bang>')
 
-command! -nargs=0 BB call tagbar#ToggleWindow()
 noremap <silent> <Leader>o :TagbarToggle<CR>
 
 " see https://github.com/majutsushi/tagbar/wiki#google-go
@@ -185,6 +172,8 @@ let g:tagbar_type_scala = {
 \ }
 
 
+
+
 let g:lsp_text_edit_enabled = 0
 let g:lsp_highlight_references_enabled = 1
 
@@ -203,35 +192,6 @@ if executable('gopls')
         \ 'whitelist': ['go'],
         \ })
     " autocmd BufWritePre *.go LspDocumentFormatSync
-endif
-" if executable('go-langserver')
-"     au User lsp_setup call lsp#register_server({
-"         \ 'name': 'go-langserver',
-"         \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
-"         \ 'whitelist': ['go'],
-"         \ })
-" endif
-if executable('java') && filereadable(expand('~/lsp/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.500.v20190715-1310.jar'))
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'eclipse.jdt.ls',
-        \ 'cmd': {server_info->[
-        \     'java',
-        \     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-        \     '-Dosgi.bundles.defaultStartLevel=4',
-        \     '-Declipse.product=org.eclipse.jdt.ls.core.product',
-        \     '-Dlog.level=ALL',
-        \     '-noverify',
-        \     '-Dfile.encoding=UTF-8',
-        \     '-Xmx1G',
-        \     '-jar',
-        \     expand('~/lsp/eclipse.jdt.ls/plugins/org.eclipse.equinox.launcher_1.5.500.v20190715-1310.jar'),
-        \     '-configuration',
-        \     expand('~/lsp/eclipse.jdt.ls/config_linux'),
-        \     '-data',
-        \     getcwd()
-        \ ]},
-        \ 'whitelist': ['java'],
-        \ })
 endif
 if executable('metals-vim')
    au User lsp_setup call lsp#register_server({
@@ -258,10 +218,9 @@ let g:lsp_diagnostics_enabled = 0
 let g:lsp_fold_enabled = 0
 
 
-" let g:ale_linters = {'go': ['golangci-lint']}
 let g:ale_linters = {'go': ['golangci-lint', 'govet']}
-let g:ale_fix_on_save = 1
 let g:ale_fixers = {'go': ['goimports', 'gofmt']}
+let g:ale_fix_on_save = 1
 
 
 let g:previm_open_cmd = 'open -a Safari'
@@ -271,17 +230,12 @@ augroup PrevimSettings
 augroup END
 
 
-
 let g:multi_cursor_exit_from_insert_mode=0
+
 
 let g:go_fmt_autosave=0
 let g:go_def_mapping_enabled=0
 
-au BufWrite *.rs :Autoformat
-" au BufWrite *.go :Autoformat
-au BufWrite *.scss :Autoformat
-au BufWrite *.py :Autoformat
-" if you want to disable AutoFormat, use :au! BufWrite"
 
 let g:user_emmet_leader_key='<C-C>'
 let g:user_emmet_settings = {
@@ -289,6 +243,7 @@ let g:user_emmet_settings = {
 \      'extends' : 'jsx',
 \  },
 \}
+
 
 let g:vim_json_syntax_conceal = 0
 
@@ -306,13 +261,11 @@ let g:fastfold_savehook = 0
 
 let g:vim_markdown_folding_disabled = 1
 
-
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_always_populate_loc_list = 1
-
 let g:indent_guides_guide_size = 1
 
+
 map f <Plug>(easymotion-bd-w)
+
 
 """""""""""""""""""""""""""""""""""""""
 """""""" Settings for Mappings """""""""
@@ -343,7 +296,6 @@ nnoremap <silent> <leader>b :nohlsearch<CR>
 nnoremap <Leader>= :wincmd =<CR>
 
 nmap S :%s//g<LEFT><LEFT>
-" vmap <Leader>S y:%s///g<LEFT><LEFT><LEFT><C-R>"<RIGHT>
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 map <Leader>w :w<CR>
@@ -395,8 +347,6 @@ autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 autocmd BufWritePost *.coffee silent make!
 autocmd QuickFixCmdPost * nested cwindow | redraw!
 autocmd BufNewFile,BufReadPost *.js set shiftwidth=4 softtabstop=4 expandtab
-autocmd! BufEnter *.jsx let b:syntastic_checkers=['eslint']
-autocmd! BufEnter *.js let b:syntastic_checkers=['eslint']
 autocmd BufNewFile,BufRead *.js set filetype=javascript.jsx
 autocmd BufNewFile,BufRead *.ejs set filetype=html
 autocmd FileType scss set iskeyword+=-
