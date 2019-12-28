@@ -221,6 +221,7 @@ let g:lsp_fold_enabled = 0
 let g:ale_linters = {'go': ['golangci-lint', 'govet']}
 let g:ale_fixers = {'go': ['goimports', 'gofmt']}
 let g:ale_fix_on_save = 1
+let g:ale_go_gofmt_options=" -s -w "
 
 
 let g:previm_open_cmd = 'open -a Safari'
