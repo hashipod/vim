@@ -115,6 +115,7 @@ endfunction
 command! -nargs=* -bang CFiles call CleanFiles(<q-args>, <bang>0)
 nnoremap <leader>a :CtrlSF
 nnoremap <leader>s :CtrlSFOpen <CR>
+nnoremap <Leader>f yiw :CtrlSF "<C-R>""<CR>
 vnoremap <Leader>a y<ESC> :CtrlSF "<C-R>""
 
 let g:ctrlsf_auto_focus = { "at": "start" }
